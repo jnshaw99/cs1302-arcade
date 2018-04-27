@@ -1,0 +1,9 @@
+.gridpane{
+    -fx-vgap: 32;
+    -fx-hgap: 32;
+    -fx-border-width: 40;
+    -fx-alignment: center;
+    -fx-background-image: url("https://www.tenstickers.co.uk/wall-stickers/img/preview/chess-and-checkers-board-sticker-6270.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat
+}
