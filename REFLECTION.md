@@ -15,7 +15,7 @@ that the Markdown is transformed into nice looking HTML.
 
 3. **PROB:** Difficulty getting the basic arcade GUI to do what we want it to do.
 
-##FRI 2018-04-27 @ 5:09 EST
+## FRI 2018-04-27 @ 5:09 EST
 
 1. **DONE:** Created the base GUI and got the basic Checkers GUI to work. Figred out how to use GITHUB so we can collaborate together. Began working on the space invaders game.
  
