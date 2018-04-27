@@ -14,3 +14,11 @@ that the Markdown is transformed into nice looking HTML.
 2. **TODO:** Create both of the sepearate game, finish the basic arcade GUI.
 
 3. **PROB:** Difficulty getting the basic arcade GUI to do what we want it to do.
+
+##FRI 2018-04-27 @ 5:09 EST
+
+1. **DONE:** Created the base GUI and got the basic Checkers GUI to work. Figred out how to use GITHUB so we can collaborate together. Began working on the space invaders game.
+ 
+2. **TODO:** Continue working on the individual Space Invaders and Checkers game and implement them in a fashion from which they can both be accessed from the base GUI
+ 
+3. **PROB:** Github was and is being annoying, had a lot of trouble with it tbh
