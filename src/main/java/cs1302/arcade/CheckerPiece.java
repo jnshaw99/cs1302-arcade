@@ -12,6 +12,11 @@ public class CheckerPiece extends Circle {
     private PieceColor color;
     public static boolean isPressed=false;
     public static PieceColor whoseTurn=PieceColor.WHITE;
+    public static int indexOfSelected=-1;
+    public static PieceColor colorOfSelected=PieceColor.CLEAR;
+
+    public static int blackCount=0;
+    public static int whiteCount=0;
 
     public CheckerPiece(int x, int y, PieceColor setting){
         super(20);
@@ -40,7 +45,15 @@ public class CheckerPiece extends Circle {
 
     public int getyPos() {return yPos;}
 
-    public void setColor(Color newColor){setFill(newColor);}
+    public void setColor(PieceColor newColor){
+	color=newColor;
+	if(color==PieceColor.CLEAR)
+	    setFill(Color.TRANSPARENT);
+	else if(color==PieceColor.WHITE)
+	    setFill(Color.LINEN);
+	else if(color==PieceColor.BLACK)
+	    setFill(Color.GRAY);
+    }
 
     public PieceColor getColor(){
         return color;
