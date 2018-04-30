@@ -79,6 +79,39 @@ public class Checkers {
 		return true;
 	    }		
 	}
+	if(CheckerPiece.selectedIsKing){
+	    if(oldColor==PieceColor.WHITE){
+		if((x-pieceX)==1 && (y-pieceY)==1)
+		    return true;
+		if((x-pieceX)==1 && (y-pieceY)==-1)
+		    return true;
+		if((x-pieceX)==2&&(y-pieceY)==2 && (theBoard.get((pieceX+1)*8+(pieceY+1)).getColor()==PieceColor.BLACK)){
+		    theBoard.get((pieceX+1)*8+(pieceY+1)).setColor(PieceColor.CLEAR);
+		    CheckerPiece.blackCount--;
+		    return true;
+		}
+		if((x-pieceX)==2&&(y-pieceY)==-2 && (theBoard.get((pieceX+1)*8+(pieceY-1)).getColor()==PieceColor.BLACK)){
+		    theBoard.get((pieceX+1)*8+(pieceY-1)).setColor(PieceColor.CLEAR);
+		    CheckerPiece.blackCount--;
+		    return true;
+		}		
+	    }else if(oldColor==PieceColor.BLACK){
+		if((x-pieceX)==-1 && (y-pieceY)==-1)
+		    return true;
+		if((x-pieceX)==-1 && (y-pieceY)==1)
+		    return true;
+		if((x-pieceX)==-2&&(y-pieceY)==-2 && (theBoard.get((pieceX-1)*8+(pieceY-1)).getColor()==PieceColor.WHITE)){
+		    theBoard.get((pieceX-1)*8+(pieceY-1)).setColor(PieceColor.CLEAR);
+		    CheckerPiece.whiteCount--;
+		    return true;
+		}
+		if((x-pieceX)==-2&&(y-pieceY)==2 && (theBoard.get((pieceX-1)*8+(pieceY+1)).getColor()==PieceColor.WHITE)){
+		    theBoard.get((pieceX-1)*8+(pieceY+1)).setColor(PieceColor.CLEAR);
+		    CheckerPiece.whiteCount--;
+		    return true;
+		}		
+	    }
+	}
 	return false;
     }
 
@@ -110,6 +143,11 @@ public class Checkers {
 			if(temp.getColor()==PieceColor.CLEAR && canMoveTo(temp.getxPos(), temp.getyPos(), CheckerPiece.colorOfSelected)){
 			    theBoard.get(CheckerPiece.indexOfSelected)
 				.setColor(PieceColor.CLEAR);
+			    if(CheckerPiece.selectedIsKing){
+				theBoard.get(CheckerPiece.indexOfSelected).toggleKing();
+				temp.toggleKing();
+			    }else if(temp.getxPos()==0 || temp.getxPos()==7)
+				temp.toggleKing();
 			    temp.setColor(CheckerPiece.whoseTurn);
 			    if(CheckerPiece.whoseTurn==PieceColor.WHITE)
 				CheckerPiece.whoseTurn=PieceColor.BLACK;
@@ -117,6 +155,10 @@ public class Checkers {
 				CheckerPiece.whoseTurn=PieceColor.WHITE;
 			    CheckerPiece.isPressed=!CheckerPiece.isPressed;
 			}else{
+			    if(CheckerPiece.colorOfSelected==PieceColor.WHITE && CheckerPiece.selectedIsKing)
+				theBoard.get(CheckerPiece.indexOfSelected).setFill(Color.YELLOW);
+			    if(CheckerPiece.colorOfSelected==PieceColor.BLACK && CheckerPiece.selectedIsKing)
+				theBoard.get(CheckerPiece.indexOfSelected).setFill(Color.BROWN);
 			    if(CheckerPiece.colorOfSelected==PieceColor.WHITE)
 				theBoard.get(CheckerPiece.indexOfSelected).setFill(Color.LINEN);
 			    if(CheckerPiece.colorOfSelected==PieceColor.BLACK)
@@ -129,6 +171,10 @@ public class Checkers {
                             temp.setFill(Color.GREEN);
 			    CheckerPiece.indexOfSelected=(temp.getxPos()*8+temp.getyPos());
 			    CheckerPiece.colorOfSelected=temp.getColor();
+			    if(temp.getIsKing())
+				CheckerPiece.selectedIsKing=true;
+			    else
+				CheckerPiece.selectedIsKing=false;
 			}
                     }
 		    if(CheckerPiece.whiteCount<=0)

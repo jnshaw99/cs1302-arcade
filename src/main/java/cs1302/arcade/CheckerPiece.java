@@ -14,7 +14,8 @@ public class CheckerPiece extends Circle {
     public static PieceColor whoseTurn=PieceColor.WHITE;
     public static int indexOfSelected=-1;
     public static PieceColor colorOfSelected=PieceColor.CLEAR;
-
+    public static boolean selectedIsKing=false;
+    boolean isKing=false;
     public static int blackCount=0;
     public static int whiteCount=0;
 
@@ -44,11 +45,23 @@ public class CheckerPiece extends Circle {
     public int getxPos(){return xPos;}
 
     public int getyPos() {return yPos;}
+    
+    public void toggleKing(){
+	isKing=!isKing;
+    }
+    
+    public boolean getIsKing(){
+	return isKing;
+    }
 
     public void setColor(PieceColor newColor){
 	color=newColor;
 	if(color==PieceColor.CLEAR)
 	    setFill(Color.TRANSPARENT);
+	else if(color==PieceColor.WHITE && isKing)
+	    setFill(Color.YELLOW);
+	else if(color==PieceColor.BLACK && isKing)
+	    setFill(Color.BROWN);
 	else if(color==PieceColor.WHITE)
 	    setFill(Color.LINEN);
 	else if(color==PieceColor.BLACK)
