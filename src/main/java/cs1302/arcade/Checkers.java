@@ -20,7 +20,7 @@ public class Checkers {
     private int i;
     private int j;
 
-    public Checkers(Stage stage, boolean singlePlayer){
+    public Checkers(Stage stage){
         stage.setHeight(635);
         stage.setWidth(600);
         gridPane.getStyleClass().add("gridpane");
@@ -175,13 +175,14 @@ public class Checkers {
 				CheckerPiece.selectedIsKing=true;
 			    else
 				CheckerPiece.selectedIsKing=false;
+			    
 			}
                     }
 		    if(CheckerPiece.whiteCount<=0)
 			winner(PieceColor.BLACK);
 		    if(CheckerPiece.blackCount<=0)
 			winner(PieceColor.WHITE);
-
+		    /***************AI CODE************/
                 });
                 gridPane.add(theBoard.get((i*8)+j),j,i);
             }
