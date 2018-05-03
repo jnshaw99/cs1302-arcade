@@ -1,0 +1,22 @@
+package cs1302.arcade;
+
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+
+
+public class Player extends ImageView{
+
+    public int lives = 3;
+    public int score = 0; 
+    public Player(Image image){
+	super(image);
+
+    }
+
+    public void setDifficulty(int level) {
+	lives = level;
+    }
+
+ 
+
+}

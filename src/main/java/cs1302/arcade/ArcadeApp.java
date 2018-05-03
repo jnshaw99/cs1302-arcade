@@ -5,15 +5,18 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.Random;
-
+/*
+ *Builds and launches the gui for the arcade app
+ *Takes the rootpane from other classes
+ *@inheritDoc Application
+ */
 public class ArcadeApp extends Application {
-    Random rng = new Random();
 
+    public static Scene scene;
     @Override
     public void start(Stage stage) {
         ArcadeMenu arcadeMenu = new ArcadeMenu(stage);
-        Scene scene = new Scene(arcadeMenu.getRootPane(),640, 480);
+        scene = new Scene(arcadeMenu.getRootPane(),640, 480);
         scene.getStylesheets().add("stylesheet.css");
         stage.setTitle("cs1302-arcade!");
         stage.setScene(scene);
@@ -26,7 +29,7 @@ public class ArcadeApp extends Application {
         //group.requestFocus();
 
     } // start
-
+    //launches the application
     public static void main(String[] args) {
         try {
             Application.launch(args);
